@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>TPL Orléans Rives de Loire</title>
+  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+
+<script  src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<script  src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+<script  src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA4R6pTkIiozpEHSp1x0OpRwymj6f1glmw",
+    authDomain: "tpl-orl-rdl.firebaseapp.com",
+    databaseURL: "https://tpl-orl-rdl.firebaseio.com",
+    projectId: "tpl-orl-rdl",
+    storageBucket: "tpl-orl-rdl.appspot.com",
+    messagingSenderId: "441413483900",
+    appId: "1:441413483900:web:5198701249fcd31b3eb8f9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  
+</script>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css'>
+
+
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./styleLogin.css">
+</head>
+
+<div class="wrapperLogin">
+	<div class="container">
+		<h1>TPL Orléans RDL</h1>
+		
+		<div class="formInput">
+			<input id='InputLogin' type="text" placeholder="Adresse mail">
+			<input id='InputPwd' type="password" placeholder="Mot de passe">
+			<button type="submit" id="login-button">Connection</button>
+		</div>
+	</div>
+</div>
+
+
+
+<body>
+<!-- partial:index.partial.html -->
+<script>
+  // fill the month table with column headings
+function day_title(day_name) {
+    document.write("<div class='c-cal__col'>" + day_name + "</div>");
+  }
+  // fills the month table with numbers
+function fill_table(month, month_length, indexMonth) {
+    day = 1;
+    // begin the new month table
+    document.write("<div class='c-main c-main-" + indexMonth + "'>");
+    //document.write("<b>"+month+" "+year+"</b>")
+
+    // column headings
+    document.write("<div class='c-cal__row'>");
+    day_title("Lun");
+    day_title("Mar");
+    day_title("Mer");
+    day_title("Jeu");
+    day_title("Ven");
+    day_title("Sam");
+    day_title("Dim");
+    document.write("</div>");
+
+    // pad cells before first day of month
+    document.write("<div class='c-cal__row'>");
+    for (var i = 1; i < start_day; i++) {
+      if (start_day > 7) {
+      } else {
+        document.write("<div class='c-cal__cel'></div>");
+      }
+    }
+
+    // fill the first week of days
+    for (var i = start_day; i < 8; i++) {
+      document.write(
+        "<div data-day='2020-" +
+          indexMonth +
+          "-0" +
+          day +
+          "'class='c-cal__cel'><p>" +
+          day +
+          "</p></div>"
+      );
+      day++;
+    }
+    document.write("</div>");
+
+    // fill the remaining weeks
+    while (day <= month_length) {
+      document.write("<div class='c-cal__row'>");
+      for (var i = 1; i <= 7 && day <= month_length; i++) {
+        if (day >= 1 && day <= 9) {
+          document.write(
+            "<div data-day='2020-" +
+              indexMonth +
+              "-0" +
+              day +
+              "'class='c-cal__cel'><p>" +
+              day +
+              "</p></div>"
+          );
+          day++;
+        } else {
+          document.write(
+            "<div data-day='2020-" +
+              indexMonth +
+              "-" +
+              day +
+              "' class='c-cal__cel'><p>" +
+              day +
+              "</p></div>"
+          );
+          day++;
+        }
+      }
+      document.write("</div>");
+      // the first day of the next month
+      start_day = i;
+    }
+
+    document.write("</div>");
+  }
+</script>
+<header>
+
+
+
+
+
+
+
+
+  <div class="wrapper">
+    <div class="c-monthyear">
+    <div class="c-month">
+        <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span>
+        <div id="c-paginator">
+          <span class="c-paginator__month">Janvier</span>
+          <span class="c-paginator__month">Fevrier</span>
+          <span class="c-paginator__month">Mars</span>
+          <span class="c-paginator__month">Avril</span>
+          <span class="c-paginator__month">Mai</span>
+          <span class="c-paginator__month">Juin</span>
+          <span class="c-paginator__month">Juillet</span>
+          <span class="c-paginator__month">Aout</span>
+          <span class="c-paginator__month">Septembre</span>
+          <span class="c-paginator__month">Octobre</span>
+          <span class="c-paginator__month">Novembre</span>
+          <span class="c-paginator__month">Decembre</span>
+        </div>
+        <span id="next" class="next fa fa-angle-right" aria-hidden="true"></span>
+      </div>
+      <span class="c-paginator__year">2020</span>
+    </div>
+    <div class="c-sort">
+      <a class="o-btn c-today__btn" href="javascript:;">Aujourd'hui</a>
+    </div>
+  </div>
+</header>
+<div class="wrapper">
+  <div class="c-calendar">
+    <div class="c-calendar__style c-aside">
+      <a class="c-add o-btn js-event__add" href="javascript:;">Reserver un créneau<span class="fa fa-plus"></span></a>
+      <div class="c-aside__day">
+        <span class="c-aside__num"></span> <span class="c-aside__month"></span>
+      </div>
+      <div class="c-aside__eventList">
+      </div>
+    </div>
+    <div class="c-cal__container c-calendar__style">
+      <script>
+      
+      // CAHNGE the below variable to the CURRENT YEAR
+      year = 2020;
+
+      // first day of the week of the new year
+      today = new Date("January 1, " + year);
+      start_day = today.getDay() ; //+1
+      fill_table("Janvier", 31, "01");
+      fill_table("Fevrier", 29, "02");
+      fill_table("Mars", 31, "03");
+      fill_table("Avril", 30, "04");
+      fill_table("Mais", 31, "05");
+      fill_table("Juin", 30, "06");
+      fill_table("Juillet", 31, "07");
+      fill_table("Aout", 31, "08");
+      fill_table("Septembre", 30, "09");
+      fill_table("Octobre", 31, "10");
+      fill_table("Novembre", 30, "11");
+      fill_table("Decembre", 31, "12");
+      </script>
+    </div>
+  </div>
+
+  <div class="c-event__creator c-calendar__style js-event__creator">
+    <a href="javascript:;" class="o-btn js-event__close">Fermer <span class="fa fa-close"></span></a>
+    <form name="formu">
+
+	  <input name="listejour" onChange='filltheselect(this.name, new Date(this.value).getDay()-1)' type="date">
+	  
+	  <br>
+	  
+		 Choisir une heure
+		<select placeholder="Choisir une heure" name="listeheure" onChange='filltheselect(this.name, this.value)'>
+		   <script language="javascript">
+		   for (i=0; i<heure["j0"].length; i++)
+			  document.write("<option value=\"" +heure["j0"][i][0]+ "\">" +heure["j0"][i][1]);
+		   </script>
+		</select>
+		
+		 <br>
+		 
+		 Choisir une lieu
+		<select placeholder="Choisir un lieu" name="listelieu">
+		   <script language="javascript">
+		   for (i=0; i<lieu["j0h0"].length; i++)
+			  document.write("&lt;option value=\"" +lieu["j0h0"][i][0]+ "\">" +lieu["j0h0"][i][1]);
+		   </script>
+		</select>
+      
+	  
+	  
+    </form>
+    <br>
+    <a href="javascript:;" class="o-btn js-event__save">Enregistrer <span class="fa fa-save"></span></a>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/2.1.6/jquery.cycle2.core.min.js'></script>
+<script  src="./config.js"></script>
+<script  src="./script.js"></script>
+
+</body>
+</html>
