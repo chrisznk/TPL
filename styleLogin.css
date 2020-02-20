@@ -706,8 +706,8 @@ header > .wrapper a {
 @media(min-width: 768px) and (max-width: 1000px)
 
 {
-	container h1 {
-		font-size: 100px !important;
+	.container h1 {
+		font-size: 70px !important;
 	}
 	.formInput input {
 		width: 90% !important;
@@ -722,6 +722,7 @@ header > .wrapper a {
 	}
 	.c-aside {
 		width: 92% !important;
+	}
 	html {
 		font-size: 30px !important;
 	}
@@ -741,8 +742,9 @@ header > .wrapper a {
 @media(max-width: 767px)
 
 {
-	container h1 {
-		font-size: 100px !important;
+	.container h1 {
+	
+		font-size: 70px !important;
 	}
 	.formInput input {
 		width: 90% !important;

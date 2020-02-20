@@ -575,13 +575,143 @@ input {
 
 
 
+#calendarClassique{
+	display: block;
+}
+#calendarMini{
+	display: none;
+}
 
 
 
 
 
 
+@media(min-width: 768px) and (max-width: 1000px)
 
+{
+
+.o-btn {
+    font-size: 30px !important;
+}
+.c-paginator__year {
+    font-size: 30px !important;
+}
+	
+.c-month .prev {
+    left: -15px !important;
+}
+
+.c-month .next {
+    right: -15px !important;
+}
+	
+	#calendarClassique{
+		display: none;
+	}
+	#calendarMini{
+		display: block;
+	}
+	h1 {
+
+    padding-left: 25% !important;
+}
+		
+	
+	container h1 {
+		font-size: 58px !important;	
+		font-size: 100px !important;
+	}
+	.formInput input {
+		width: 90% !important;
+		font-size: 58px !important;		
+	}
+	.formInput button {
+		    width: 90% !important;
+			    font-size: 58px !important;
+	}
+	.wrapperLogin {
+		height: 100% !important;
+	}
+	.c-aside {
+		width: 92% !important;
+	}
+	html {
+		font-size: 30px !important;
+	}
+	header > .wrapper {
+		padding: 0 100px !important;
+	}
+			
+	.c-cal__container {
+	margin-left: 130px !important;
+		
+	}
+}
+
+
+
+
+@media(max-width: 767px)
+
+{
+
+
+.o-btn {
+    font-size: 30px !important;
+}
+.c-paginator__year {
+    font-size: 30px !important;
+}
+	
+.c-month .prev {
+    left: -15px !important;
+}
+
+.c-month .next {
+    right: -15px !important;
+}
+h1 {
+
+    padding-left: 25% !important;
+}
+
+	#calendarClassique{
+		display: none;
+	}
+	#calendarMini{
+		display: block;
+	}
+	
+	container h1 {
+		font-size: 58px !important;	
+		font-size: 100px !important;
+	}
+	.formInput input {
+		width: 90% !important;
+		font-size: 58px !important;		
+	}
+	.formInput button {
+		    width: 90% !important;
+			    font-size: 58px !important;
+	}
+	.wrapperLogin {
+		height: 100% !important;
+	}
+	.c-aside {
+		width: 92% !important;
+	html {
+		font-size: 30px !important;
+	}
+	header > .wrapper {
+		padding: 0 100px !important;
+	}
+			
+	.c-cal__container {
+	margin-left: 130px !important;
+		
+	}
+}
 
 
 
