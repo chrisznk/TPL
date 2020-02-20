@@ -48,7 +48,6 @@
 /* ===========================================================*/
 body {
   position: realative;
-  height: 100%;
 }
 body.overlay:before {
   position: fixed;
@@ -427,8 +426,8 @@ header > .wrapper a {
   position: absolute;
   content: '';
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-color: #F5F5F5;
   z-index: 10;
   padding: 0;
@@ -449,7 +448,7 @@ header > .wrapper a {
   background-color: #F57170;
 }
 .c-aside {
-  width: 300px;
+  width: 40%;
   padding: 20px;
 }
 .c-aside__day {
@@ -558,4 +557,34 @@ select::-ms-expand {
 input {
   height: 40px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -688,3 +688,98 @@ header > .wrapper a {
   opacity: 1;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+@media(min-width: 768px) and (max-width: 1388px)
+
+{
+	container h1 {
+		font-size: 100px !important;
+	}
+	.formInput input {
+		width: 90% !important;
+		font-size: 58px !important;		
+	}
+	.formInput button {
+		    width: 90% !important;
+			    font-size: 58px !important;
+	}
+	.wrapperLogin {
+		height: 100% !important;
+	}
+	.c-aside {
+		width: 92% !important;
+	html {
+		font-size: 30px !important;
+	}
+	header > .wrapper {
+		padding: 0 100px !important;
+	}
+			
+	.c-cal__container {
+	margin-left: 130px !important;
+		
+	}
+}
+
+*/
+
+
+@media(max-width: 767px)
+
+{
+	container h1 {
+		font-size: 100px !important;
+	}
+	.formInput input {
+		width: 90% !important;
+		font-size: 58px !important;		
+	}
+	.formInput button {
+		    width: 90% !important;
+			    font-size: 58px !important;
+	}
+	.wrapperLogin {
+		height: 100% !important;
+	}
+	.c-aside {
+		width: 92% !important;
+	html {
+		font-size: 30px !important;
+	}
+	header > .wrapper {
+		padding: 0 100px !important;
+	}
+			
+	.c-cal__container {
+	margin-left: 130px !important;
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
