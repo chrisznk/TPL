@@ -701,9 +701,9 @@ header > .wrapper a {
 
 
 
-/*
 
-@media(min-width: 768px) and (max-width: 1388px)
+
+@media(min-width: 768px) and (max-width: 1000px)
 
 {
 	container h1 {
@@ -735,7 +735,7 @@ header > .wrapper a {
 	}
 }
 
-*/
+
 
 
 @media(max-width: 767px)
