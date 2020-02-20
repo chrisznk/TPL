@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>TPL Orléans Rives de Loire</title>
@@ -11,6 +11,10 @@
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
 <script  src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
 <script  src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
+
+<!--Push notification ONESIGNAL -->
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -42,6 +46,10 @@
 <link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="./styleLogin.css">
 </head>
+
+
+<a id="boutonDeDeconnection" onclick='localStorage.NomUser="";localStorage.IdUser="";firebase.auth().signOut();document.location.reload(true);' class="o-btn c-today__btn" href="javascript:;"><b>X</b></a>
+
 
 <div class="wrapperLogin">
 	<div class="container">

@@ -1,23 +1,51 @@
 ////////////////////////////////////////////////////////////////////////////////Code Login
-var NomUser="";
-var IdUser="";
-document.styleSheets[2].disabled = true;
-firebase.auth().signOut();
+var NomUser=localStorage.NomUser;
+var IdUser=localStorage.IdUser;
+
+if(localStorage.IdUser==""){
+	document.styleSheets[2].disabled = true;
+}else{
+	
+		document.styleSheets[3].disabled = true;
+		document.styleSheets[2].disabled = false;
+		$('.formInput').fadeOut(0);
+	 $('.wrapperLogin').addClass('form-success');
+
+	
+}
+
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
 	  console.log(user);
 	  IdUser=user.uid;
+
+	  
+	  
 	  
 	  var jourDatabase = firebase.database().ref('user/'+IdUser);
 	  jourDatabase.on('value', function(snapshot) {
 			NomUser=snapshot.val();
 			
+			localStorage.NomUser=NomUser;
+			localStorage.IdUser=IdUser;
+			//CECI EST L'INSCRIPTION AUX NOTIFICATIONS 
+			
+			
+			
+			  var OneSignal = window.OneSignal || [];
+			  OneSignal.push(function() {
+				OneSignal.init({
+				  appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
+				});
+			  });
+			
+			
 			
 			//CECI EST LE PROCESSUS QUI VA RECEPTIONNER TOUTE ELS INFORMATIONS EN bdd
 		
 			var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){this.replaceWith( \'"+NomUser+"\' );};";
-			var BoutonDepanner='<a class="c-add o-btn js-event__add" onclick="'+depannerConfirmation+'"  href="javascript:;">Dépanner</a>';
+			var BoutonDepanner='<a class="c-add o-btn js-event__add" onclick="'+depannerConfirmation+'"  href="javascript:;"><font color="red"><b>Dépanner</b></font></a>';
 			var ListeDesCreneaux ='';
 
 

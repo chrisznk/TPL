@@ -572,7 +572,11 @@ input {
 
 
 
-
+#boutonDeDeconnection{
+	color: red;  
+	float: right; 
+	margin-right:20px !important;
+}
 
 
 #calendarClassique{
@@ -585,7 +589,13 @@ input {
 
 
 
+.c-paginator__year {
+    font-size: 30px !important;
+}
+h1 {
 
+    padding-left: 42% !important;
+}
 
 @media(min-width: 768px) and (max-width: 1000px)
 
