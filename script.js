@@ -2,13 +2,7 @@
 var NomUser=localStorage.NomUser;
 var IdUser=localStorage.IdUser;
 
-var OneSignal = window.OneSignal || [];
-	OneSignal.push(function() {
-		OneSignal.init({
-			appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
-	});
-				  
-});
+
 
 
 
@@ -32,7 +26,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 	  IdUser=user.uid;
 
 	  
-	  
+	  var OneSignal = window.OneSignal || [];
+	OneSignal.push(function() {
+		OneSignal.init({
+			appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
+		});
+
+	});
 	  
 	  var jourDatabase = firebase.database().ref('user/'+IdUser);
 	  jourDatabase.on('value', function(snapshot) {
