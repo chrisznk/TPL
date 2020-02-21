@@ -2,6 +2,17 @@
 var NomUser=localStorage.NomUser;
 var IdUser=localStorage.IdUser;
 
+var OneSignal = window.OneSignal || [];
+	OneSignal.push(function() {
+		OneSignal.init({
+			appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
+	});
+				  
+});
+
+
+
+
 if(localStorage.IdUser==""){
 	document.styleSheets[2].disabled = true;
 }else{
@@ -33,12 +44,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			
 			
 			
-			  var OneSignal = window.OneSignal || [];
-			  OneSignal.push(function() {
-				OneSignal.init({
-				  appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
-				});
-			  });
+			  
 			
 			
 			
