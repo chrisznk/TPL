@@ -1,3 +1,59 @@
+function envoyerNotif(Frere1,Frere2,Jour,Lieu,Heure){
+	var Nom_1="";
+	var Mail_1="";
+	var Notif_1="";
+	var Tel_1="";
+	
+	var Nom_2="";
+	var Mail_2="";
+	var Notif_2="";
+	var Tel_2="";
+	
+	
+	var AllUsers = firebase.database().ref('user');
+	AllUsers.on('value', function(snapshot) {
+		for(SimpleUser in snapshot.val()){
+
+			if(snapshot.child(SimpleUser).child('Nom').val()==Frere1){
+				
+				 Nom_1=snapshot.child(SimpleUser).child('Nom').val();
+				 Mail_1=snapshot.child(SimpleUser).child('Mail').val();
+				 Notif_1=snapshot.child(SimpleUser).child('Notif').val();
+				 Tel_1=snapshot.child(SimpleUser).child('Tel').val();
+
+			}
+			if(snapshot.child(SimpleUser).child('Nom').val()==Frere2){
+				
+				 Nom_2=snapshot.child(SimpleUser).child('Nom').val();
+				 Mail_2=snapshot.child(SimpleUser).child('Mail').val();
+				 Notif_2=snapshot.child(SimpleUser).child('Notif').val();
+				 Tel_2=snapshot.child(SimpleUser).child('Tel').val();
+				
+			}
+			
+		}
+		
+		firebase.database().ref('notif/' + SimpleUser).set({
+					'Jour': Jour,
+					'Heure': Heure,
+					'Lieu': Lieu,
+					'Nom_2': Nom_2,
+					'Mail_2': Mail_2,
+					'Notif_2': Notif_2,
+					'Tel_2': Tel_2,
+					'Nom_1': Nom_1,
+					'Mail_1': Mail_1,
+					'Notif_1': Notif_1,
+					'Tel_1': Tel_1,
+		});
+		
+	});	
+	
+}
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////Code Login
 var NomUser=localStorage.NomUser;
 var IdUser=localStorage.IdUser;
@@ -30,6 +86,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			localStorage.NomUser=NomUser.Nom;
 			localStorage.IdUser=NomUser.IdUser;
 			//CECI EST L'INSCRIPTION AUX NOTIFICATIONS 
+			
 			
 			
 			
@@ -69,7 +126,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 							
 
 							if(!Frere2){
-								var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){	      if('"+Frere1+"'!='"+NomUser.Nom+"'){ firebase.database().ref(\'calendrier/"+Jour+"/"+Lieu+"/"+Heure+"/\').set({\'1\': \'"+Frere1+"\',\'2\': \'"+NomUser.Nom+"\'});this.replaceWith( \'"+NomUser.Nom+"\' );}else{alert('Vous ne pouvez pas réserver deux fos le même créneau');}        };";
+								var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){	      if('"+Frere1+"'!='"+NomUser.Nom+"'){ firebase.database().ref(\'calendrier/"+Jour+"/"+Lieu+"/"+Heure+"/\').set({\'1\': \'"+Frere1+"\',\'2\': \'"+NomUser.Nom+"\'});                        envoyerNotif('"+Frere1+"','"+NomUser.Nom+"','"+Jour+"','"+Lieu+"','"+Heure+"');                       this.replaceWith( \'"+NomUser.Nom+"\' );}else{alert('Vous ne pouvez pas réserver deux fos le même créneau');}        };";
 								var BoutonDepanner='<a class="c-add o-btn js-event__add" onclick="'+depannerConfirmation+'"  href="javascript:;"><font color="red"><b>Dépanner</b></font></a>';
 
 								
