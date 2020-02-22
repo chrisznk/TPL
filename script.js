@@ -2,11 +2,6 @@
 var NomUser=localStorage.NomUser;
 var IdUser=localStorage.IdUser;
 
-
-
-
-
-
 if(localStorage.IdUser==""){
 	document.styleSheets[2].disabled = true;
 }else{
@@ -26,33 +21,32 @@ firebase.auth().onAuthStateChanged(function(user) {
 	  IdUser=user.uid;
 
 	  
-	  var OneSignal = window.OneSignal || [];
-	OneSignal.push(function() {
-		OneSignal.init({
-			appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
-		});
-
-	});
+	  
 	  
 	  var jourDatabase = firebase.database().ref('user/'+IdUser);
 	  jourDatabase.on('value', function(snapshot) {
 			NomUser=snapshot.val();
 			
-			localStorage.NomUser=NomUser;
-			localStorage.IdUser=IdUser;
+			localStorage.NomUser=NomUser.Nom;
+			localStorage.IdUser=NomUser.IdUser;
 			//CECI EST L'INSCRIPTION AUX NOTIFICATIONS 
 			
 			
 			
-			  
+			var OneSignal = window.OneSignal || [];
+			  OneSignal.push(function() {
+				OneSignal.init({
+				  appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
+				});
+			  });
 			
 			
 			
 			//CECI EST LE PROCESSUS QUI VA RECEPTIONNER TOUTE ELS INFORMATIONS EN bdd
-		
-			var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){this.replaceWith( \'"+NomUser+"\' );};";
-			var BoutonDepanner='<a class="c-add o-btn js-event__add" onclick="'+depannerConfirmation+'"  href="javascript:;"><font color="red"><b>Dépanner</b></font></a>';
-			var ListeDesCreneaux ='';
+
+	
+			//var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){	firebase.database().ref(\'calendrier/\' + listejour+\'/\'+listeheure+\'/\'+listelieu+\'/\').set({\'1\': snapshot.child(\'1\').val(),\'2\': \'"+NomUser+"\'});this.replaceWith( \'"+NomUser+"\' );};";
+			//var ListeDesCreneaux ='';
 
 
 			var jourDatabase = firebase.database().ref('calendrier');
@@ -67,19 +61,25 @@ firebase.auth().onAuthStateChanged(function(user) {
 					//console.log(Lieu);
 					for(Heure in snapshot.child(Jour).child(Lieu).val()){
 						//console.log(Heure);
-						for(Frere1 in snapshot.child(Jour).child(Lieu).child(Heure).val()){
-							//console.log(Frere1);
-							var Frere2=snapshot.child(Jour).child(Lieu).child(Heure).child(Frere1).val();
-							//console.log(Jour+' '+Lieu+' '+Heure+' '+Frere1+' '+Frere2);
+						//for(Frere1 in snapshot.child(Jour).child(Lieu).child(Heure).child("TEST").val()){
+							console.log(Frere1);
+							var Frere1=snapshot.child(Jour).child(Lieu).child(Heure).child("1").val();
+							var Frere2=snapshot.child(Jour).child(Lieu).child(Heure).child("2").val();
+							console.log(Jour+' '+Lieu+' '+Heure+' '+Frere1+' '+Frere2);
+							
 
-							if(Frere2=="None"){
+							if(!Frere2){
+								var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){	      if('"+Frere1+"'!='"+NomUser.Nom+"'){ firebase.database().ref(\'calendrier/"+Jour+"/"+Lieu+"/"+Heure+"/\').set({\'1\': \'"+Frere1+"\',\'2\': \'"+NomUser.Nom+"\'});this.replaceWith( \'"+NomUser.Nom+"\' );}else{alert('Vous ne pouvez pas réserver deux fos le même créneau');}        };";
+								var BoutonDepanner='<a class="c-add o-btn js-event__add" onclick="'+depannerConfirmation+'"  href="javascript:;"><font color="red"><b>Dépanner</b></font></a>';
+
+								
 								Frere2=BoutonDepanner;
 								Equilibre="impair";
 								EquilibreMsg=": Vous pouvez dépanner certains créneaux. <br />";
 							}
 							ListeDesCreneaux+='<b>'+Heure+'</b> : '+Frere1+' - '+Frere2+'<br />'
 
-						}
+						//}
 					}
 				}
 				defaultEvents(Jour,
@@ -238,7 +238,43 @@ closeBtn.on("click", function() {
   $("body").removeClass("overlay");
 });
 saveBtn.on("click", function() {
-  var inputName = $("input[name=name]").val();
+	
+	var listejour = $("input[name=listejour]").val();
+	
+	var listeheure = $("select[name=listeheure]")
+    .find(":selected")
+    .text();
+	
+	var listelieu = $("select[name=listelieu]")
+    .find(":selected")
+    .text();
+
+
+
+	 var jourDatabase = firebase.database().ref('calendrier/' + listejour+'/'+listelieu+'/'+listeheure+'/');
+	 jourDatabase.on('value', function(snapshot) {
+		 
+		 if(!snapshot.child("1").val()){
+			firebase.database().ref('calendrier/' + listejour+'/'+listelieu+'/'+listeheure+'/').set({
+				'1': NomUser.Nom
+		    });  
+		 }else if(snapshot.child("2").val()&&snapshot.child("2").val()!=NomUser.Nom){
+			alert("Ce créneau est déja pris.");
+		 }else if(snapshot.child("1").val()&&snapshot.child("1").val()!=NomUser.Nom){
+			firebase.database().ref('calendrier/' + listejour+'/'+listelieu+'/'+listeheure+'/').set({
+				'1': snapshot.child("1").val(),
+				'2': NomUser.Nom
+		    });  
+		 }
+		 
+		 
+				
+	 });
+
+  
+
+	
+  /*var inputName = $("input[name=name]").val();
   var inputDate = $("input[name=listejour]").val();
   var inputNotes = $("textarea[name=notes]").val();
   var inputTag = $("select[name=tags]")
@@ -255,11 +291,11 @@ saveBtn.on("click", function() {
       }
       $(this).addClass("event");
       if (inputTag != null) {
-        $(this).addClass("event--" + inputTag);
+        $(this).addClass("event--impair" );
       }
       fillEventSidebar($(this));
     }
-  });
+  });*/
 
   winCreator.removeClass("isVisible");
   $("body").removeClass("overlay");
@@ -281,7 +317,7 @@ function fillEventSidebar(self) {
       $(".c-aside__eventList").append(
         "<p class='c-aside__event c-aside__event--aucun'>" +
         thisName +
-        " <span> • " +
+        " <span>" +
         thisNotes +
         "</span></p>"
       );
