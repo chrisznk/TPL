@@ -162,24 +162,27 @@ function fill_table(month, month_length, indexMonth) {
   <div class="wrapper">
     <div class="c-monthyear">
     <div class="c-month">
-        <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span>
+        <!-- <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span> -->
+		<span id="prev" class="prev" aria-hidden="true"><FONT style="position: relative; top: -35px;left: -6px;" SIZE="6"><b><</b></FONT></span>
+
         <div id="c-paginator">
-          <span class="c-paginator__month"><FONT SIZE="6">Janvier </FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Fevrier</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Mars</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Avril</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Mai</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Juin</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Juillet</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Aout</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Septembre</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Octobre</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Novembre</FONT></span>
-          <span class="c-paginator__month"><FONT SIZE="6">Decembre</FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Janvier </b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Fevrier</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Mars</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Avril</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Mai</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Juin</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Juillet</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Aout</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Septembre</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Octobre</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Novembre</b></FONT></span>
+          <span class="c-paginator__month"><FONT SIZE="6"><b>Decembre</b></FONT></span>
         </div>
-        <span id="next" class="next fa fa-angle-right" aria-hidden="true"></span>
+        <span id="next" class="next" aria-hidden="true"><FONT style="position: relative; top: -35px;left: -6px;" SIZE="6"><b>></b></FONT></span>
+		<!-- class="next fa fa-angle-right" -->
       </div>
-      <span class="c-paginator__year">2020</span>
+      <span class="c-paginator__year"><b>2020</b></span>
     </div>
     <div class="c-sort">
       <a class="o-btn c-today__btn" href="javascript:;">Aujourd'hui</a>
@@ -192,7 +195,7 @@ function fill_table(month, month_length, indexMonth) {
       <a class="c-add o-btn js-event__add" href="javascript:;">Reserver un créneau<span class="fa fa-plus"></span></a>
 	  
 	  <br /><br />
-	  <a class="c-add o-btn" style="background-color: #008000;" href="https://docs.google.com/forms/d/e/1FAIpQLSelbnxPvnH7LvOrme0ifZ51u_iYmu7YlLcxNfYYZYH2YGDptA/viewform?usp=sf_link">Transmetre un rapport<span class="fa fa-plus"></span></a>
+	  <a class="c-add o-btn" style="background-color: #008000;" href="" onclick='var dateObj = new Date();var month = dateObj.getUTCMonth()+ 1;var day = dateObj.getUTCDate();var year = dateObj.getUTCFullYear();  if(month<10){month="0"+month;} if(day<10){day="0"+day;} LaDateNow = year + "-" + month + "-" + day;    window.open("https://docs.google.com/forms/d/e/1FAIpQLSelbnxPvnH7LvOrme0ifZ51u_iYmu7YlLcxNfYYZYH2YGDptA/viewform?usp=pp_url&entry.1533160103="+NomUser.Nom.replace(" ", "+")+"&entry.431806615="+LaDateNow);'>Transmetre un rapport<span class="fa fa-plus"></span></a>
 	  
       <div class="c-aside__day">
         <span class="c-aside__num"></span> <span class="c-aside__month"></span>
@@ -206,7 +209,7 @@ function fill_table(month, month_length, indexMonth) {
     <div id="calendarClassique" class="c-calendar__style c-aside">
       <a class="c-add o-btn js-event__add" href="javascript:;">Reserver un créneau<span class="fa fa-plus"></span></a>
 	  <br /><br />
-	  <a class="c-add o-btn" style="background-color: #008000;" href="https://docs.google.com/forms/d/e/1FAIpQLSelbnxPvnH7LvOrme0ifZ51u_iYmu7YlLcxNfYYZYH2YGDptA/viewform?usp=sf_link">Transmetre un rapport<span class="fa fa-plus"></span></a>
+	  <a class="c-add o-btn" style="background-color: #008000;" href="" onclick='var dateObj = new Date();var month = dateObj.getUTCMonth()+ 1;var day = dateObj.getUTCDate();var year = dateObj.getUTCFullYear();  if(month<10){month="0"+month;} if(day<10){day="0"+day;} LaDateNow = year + "-" + month + "-" + day;    window.open("https://docs.google.com/forms/d/e/1FAIpQLSelbnxPvnH7LvOrme0ifZ51u_iYmu7YlLcxNfYYZYH2YGDptA/viewform?usp=pp_url&entry.1533160103="+NomUser.Nom.replace(" ", "+")+"&entry.431806615="+LaDateNow);'>Transmetre un rapport<span class="fa fa-plus"></span></a>
 	  
       <div class="c-aside__day">
         <span class="c-aside__num"></span> <span class="c-aside__month"></span>
