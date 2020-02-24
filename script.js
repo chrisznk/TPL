@@ -51,7 +51,7 @@ function envoyerNotif(Frere1,Frere2,Jour,Lieu,Heure){
 	
 }
 
-
+var OneSignal = window.OneSignal || [];
 
 
 ////////////////////////////////////////////////////////////////////////////////Code Login
@@ -65,8 +65,13 @@ if(localStorage.IdUser==""){
 		document.styleSheets[3].disabled = true;
 		document.styleSheets[2].disabled = false;
 		$('.formInput').fadeOut(0);
-	 $('.wrapperLogin').addClass('form-success');
-
+	    $('.wrapperLogin').addClass('form-success');
+	 
+				OneSignal.getUserId(function(ids) {				
+						firebase.database().ref('user/' + IdUser).update({
+							'Notif': ids
+						});
+				});
 	
 }
 
@@ -76,8 +81,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 	  console.log(user);
 	  IdUser=user.uid;
 
-	  
-	  
+	  OneSignal.getUserId(function(ids) {				
+			firebase.database().ref('user/' + IdUser).update({
+				'Notif': ids
+			});
+	  });
+		  
 	  
 	  var jourDatabase = firebase.database().ref('user/'+IdUser);
 	  jourDatabase.on('value', function(snapshot) {
@@ -90,11 +99,19 @@ firebase.auth().onAuthStateChanged(function(user) {
 			
 			
 			
-			var OneSignal = window.OneSignal || [];
+			//var OneSignal = window.OneSignal || [];
 			  OneSignal.push(function() {
 				OneSignal.init({
 				  appId: "534ba2b7-9694-4188-9c68-1044e9a2ebba",
 				});
+				
+				OneSignal.getUserId(function(ids) {				
+						firebase.database().ref('user/' + IdUser).update({
+							'Notif': ids
+						});
+				});
+				
+				
 			  });
 			
 			
