@@ -149,7 +149,9 @@
 	      raz("listeheure");
 	      raz("listelieu");
 		  choix='j'+choix;
-		  //console.log(choix);
+		  console.log("choix"+choix);
+		  console.log("heure"+heure[choix]);
+		  console.log("heure"+heure[choix].length);
 		  
 	      for (i=0; i<heure[choix].length; i++)
 	         {
