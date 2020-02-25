@@ -148,6 +148,10 @@
 	   case "listejour":
 	      raz("listeheure");
 	      raz("listelieu");
+		  
+		  if(choix==-1){
+			  choix=6;
+		  }
 		  choix='j'+choix;
 		  console.log("choix"+choix);
 		  console.log("heure"+heure[choix]);
