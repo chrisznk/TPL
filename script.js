@@ -58,7 +58,7 @@ var OneSignal = window.OneSignal || [];
 var NomUser=localStorage.NomUser;
 var IdUser=localStorage.IdUser;
 
-if(localStorage.IdUser=="" || !localStorage.IdUser){
+if(localStorage.IdUser=="" || !localStorage.IdUser || localStorage.IdUser=="undefined" || localStorage.IdUser==undefined){
 	document.styleSheets[2].disabled = true;
 }else{
 	
