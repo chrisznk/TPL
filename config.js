@@ -153,13 +153,13 @@
 		  console.log("heure"+heure[choix]);
 		  console.log("heure"+heure[choix].length);
 		  
-	      for (i=0; i<=heure[choix].length; i++)
+	      for (i=0; i<heure[choix].length; i++)
 	         {
 	         new_option = new Option(heure[choix][i][1],heure[choix][i][0]);
 	         document.formu.elements["listeheure"].
 	 options[document.formu.elements["listeheure"].length]=new_option;
 	         }
-	      for (i=0; i<=lieu[choix+"h0"].length; i++)
+	      for (i=0; i<lieu[choix+"h0"].length; i++)
 	         {
 	         new_option = new Option(lieu[choix+"h0"][i][1],lieu[choix+"h0"][i][0]);
 	         document.formu.elements["listelieu"].options[document.formu.
@@ -168,7 +168,7 @@
 	      break;
 	   case "listeheure":
 	      raz("listelieu");
-	      for (i=0; i<=lieu[choix].length; i++)
+	      for (i=0; i<lieu[choix].length; i++)
 	         {
 	         new_option = new Option(lieu[choix][i][1],lieu[choix][i][0]);
 	         document.formu.elements["listelieu"].options[document.formu.
