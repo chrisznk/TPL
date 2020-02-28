@@ -250,7 +250,8 @@ if(localStorage.IdUser=="" || !localStorage.IdUser || localStorage.IdUser=="unde
 
 
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+ // if (user) {localStorage.NomUser
+ if (user.uid ) {
 	  console.log(user);
 	  IdUser=user.uid;
 
