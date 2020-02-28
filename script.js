@@ -1,3 +1,177 @@
+var NomUser=localStorage.NomUser;
+var IdUser=localStorage.IdUser;
+if(localStorage.email){
+	document.getElementById('InputLogin').value=localStorage.email;
+	document.getElementById('InputPwd').value=localStorage.password;
+	document.getElementById('checkbox').checked=localStorage.sauvegardelogin;
+}
+
+
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+
+
+$(function() {
+	$(".btn").click(function() {
+		$(".form-signin").toggleClass("form-signin-left");
+    $(".form-signup").toggleClass("form-signup-left");
+    $(".frame").toggleClass("frame-long");
+    $(".signup-inactive").toggleClass("signup-active");
+    $(".signin-active").toggleClass("signin-inactive");
+    $(".forgot").toggleClass("forgot-left");   
+    $(this).removeClass("idle").addClass("active");
+	});
+});
+
+$(function() {
+	$(".btn-signup").click(function() {
+  
+		
+		if(document.getElementById("Creation_Prenom").value==""){
+			alert("Tu dois renseigner ton prénom");
+		}
+		else if(document.getElementById("Creation_Nom").value==""){
+			alert("Tu dois renseigner ton nom");
+		}
+		else if(document.getElementById("Creation_Tel").value==""){
+			alert("Tu dois renseigner un numéro de téléphone");
+		}
+		else if(document.getElementById("Creation_Email").value==""){
+			alert("Tu dois renseigner ton mail");
+		}
+		else if(!validateEmail(document.getElementById("Creation_Email").value)){
+			alert("L'adresse mail n'est pas conforme");
+		}
+		else if(document.getElementById("Creation_Password").value==""){
+			alert("Tu dois renseigner un mot de passe");
+		}
+		else if(document.getElementById("Creation_Confirmpassword").value==""){
+			alert("Tu dois confirmer ton mot de passe");
+		}
+		else if( document.getElementById("Creation_Password").value.length<8){
+			alert("Ton mot de passe doit faire au moins 8 charactères. Actuellement il n'en fait que "+document.getElementById("Creation_Password").value.length);
+		}
+		else if(document.getElementById("Creation_Password").value!=document.getElementById("Creation_Confirmpassword").value){
+			alert("La confirmation du mot de passe doit être identique au mot de passe");
+		}else{
+			var NewUser = firebase.auth().createUserWithEmailAndPassword(document.getElementById("Creation_Email").value, document.getElementById("Creation_Password").value).then(function(firebaseUser) {
+				/*console.log("User " + firebaseUser.uid + " created successfully!");
+				console.log(firebaseUser );
+				console.log( firebaseUser.user.uid );
+				
+				alert(firebaseUser );
+				console.log(firebaseUser.user );
+				alert(firebaseUser.user.uid );*/
+				
+				
+				
+				firebase.database().ref('user/' + firebaseUser.user.uid).set({
+						'LeNom': document.getElementById("Creation_Nom").value+'',
+						'LePrenom': document.getElementById("Creation_Prenom").value+'',
+						'Nom' : document.getElementById("Creation_Prenom").value+' '+document.getElementById("Creation_Nom").value[0],
+						'Tel':document.getElementById("Creation_Tel").value+''
+				});
+				
+				
+				var creationUserSynchro = firebase.database().ref('user/'+firebaseUser.user.uid );
+				creationUserSynchro.on('value', function(snapshot) {
+						NomUser=snapshot.val();
+						
+						localStorage.NomUser=NomUser.Nom;
+						localStorage.IdUser=NomUser.IdUser;
+						IdUser=NomUser.IdUser;
+						
+				});
+
+			   $(".nav").toggleClass("nav-up");
+			   $(".form-signup-left").toggleClass("form-signup-down");
+			   $(".success").toggleClass("success-left"); 
+			   $(".frame").toggleClass("frame-short");
+				
+				
+				
+				
+				//return firebaseUser;
+			})
+			
+			
+			
+		}
+	});
+	
+	
+});
+
+$(function() {
+	$(".btn-signin").click(function() {
+		
+		
+	     
+	
+	var email=document.getElementById("InputLogin").value+"";
+	var password=document.getElementById("InputPwd").value+"";
+  
+
+    //Sign In User with Email and Password
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
+   // user signed in
+   
+			if(document.getElementById('checkbox').checked ){
+				localStorage.email=email;
+				localStorage.password=password;
+				localStorage.sauvegardelogin=true;
+			}else{
+				localStorage.email="";
+				localStorage.password="";
+				localStorage.sauvegardelogin=false;
+			}
+   
+   
+		   $(".btn-animate").toggleClass("btn-animate-grow");
+		  $(".welcome").toggleClass("welcome-left");
+		  $(".cover-photo").toggleClass("cover-photo-down");
+		  $(".frame").toggleClass("frame-short");
+		  $(".profile-photo").toggleClass("profile-photo-down");
+		  $(".btn-goback").toggleClass("btn-goback-up");
+		  $(".forgot").toggleClass("forgot-fade");
+   
+   
+   
+		}).catch(function(error) {
+    // Handle Errors here.
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		console.log(errorCode);
+		console.log(errorMessage);
+		if(errorMessage=="The email address is badly formatted."){
+			alert("Votre adresse mail n'est pas conforme.");
+		}
+		if(errorMessage=="There is no user record corresponding to this identifier. The user may have been deleted."){
+			alert("Votre adresse mail n'est pas enregistré. Veuillez vous rapprocher de votre responsable de prédication ou du préposé aux territoires.");
+		}
+		if(errorMessage=="The password is invalid or the user does not have a password."){
+			alert("Votre mot de passe est incorrecte. Veuillez reessayer.");
+		}
+		if(errorMessage=="The password is invalid or the user does not have a password."){
+			alert("Votre mot de passe est incorrecte. Veuillez reessayer.");
+		}
+		//alert('La connection a échoué. Verifiez votre adresse mail et mot de passe.');
+	});
+
+
+	
+
+
+	});
+});
+
+
+
+
 function envoyerNotif(Frere1,Frere2,Jour,Lieu,Heure){
 	var Nom_1="";
 	var Mail_1="";
@@ -55,8 +229,7 @@ var OneSignal = window.OneSignal || [];
 
 
 ////////////////////////////////////////////////////////////////////////////////Code Login
-var NomUser=localStorage.NomUser;
-var IdUser=localStorage.IdUser;
+
 
 if(localStorage.IdUser=="" || !localStorage.IdUser || localStorage.IdUser=="undefined" || localStorage.IdUser==undefined){
 	document.styleSheets[2].disabled = true;
@@ -92,8 +265,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 	  jourDatabase.on('value', function(snapshot) {
 			NomUser=snapshot.val();
 			
-			localStorage.NomUser=NomUser.Nom;
-			localStorage.IdUser=NomUser.IdUser;
+			
+				localStorage.NomUser=NomUser.Nom;
+				localStorage.IdUser=NomUser.IdUser;
+			
 			//CECI EST L'INSCRIPTION AUX NOTIFICATIONS 
 			
 			
@@ -179,45 +354,26 @@ firebase.auth().onAuthStateChanged(function(user) {
 		
 		//document.getElementsByClassName("wrapper")[0].style.visibility = "visible"; 
 	 }, 1000);
+  }else{
+	  
+	  //document.location.reload(true);
   }
-});
-
-
-     
-
-
-
-
-
-$("#login-button").click(function(event){
-     
-
-	var email=document.getElementById("InputLogin").value+"";
-	var password=document.getElementById("InputPwd").value+"";
   
-
-    //Sign In User with Email and Password
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    // Handle Errors here.
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		console.log(errorCode);
-		console.log(errorMessage);
-		if(errorMessage=="The email address is badly formatted."){
-			alert("Votre adresse mail n'est pas conforme.");
-		}
-		if(errorMessage=="There is no user record corresponding to this identifier. The user may have been deleted."){
-			alert("Votre adresse mail n'est pas enregistré. Veuillez vous rapprocher de votre responsable de prédication ou du préposé aux territoires.");
-		}
-		if(errorMessage=="The password is invalid or the user does not have a password."){
-			alert("Votre mot de passe est incorrecte. Veuillez reessayer.");
-		}
-		if(errorMessage=="The password is invalid or the user does not have a password."){
-			alert("Votre mot de passe est incorrecte. Veuillez reessayer.");
-		}
-		//alert('La connection a échoué. Verifiez votre adresse mail et mot de passe.');
-	});
+  
+  
+  
 });
+
+
+     
+
+
+
+
+/*
+$("#login-button").click(function(event){
+
+});*/
 
 ////////////////////////////////////////////////////////////////////////////////Code Login
 
