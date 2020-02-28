@@ -49,7 +49,7 @@
 </head>
 
 
-<a id="boutonDeDeconnection" onclick='localStorage.NomUser="";localStorage.IdUser="";  firebase.auth().signOut();firebase.auth().signOut();firebase.auth().signOut(); document.location.reload(true);' class="o-btn c-today__btn" href="javascript:;"><b>X</b></a>
+<a id="boutonDeDeconnection" onclick='localStorage.NomUser="";localStorage.IdUser="";  firebase.auth().signOut();firebase.auth().signOut();firebase.auth().signOut().then(function(user) {document.location.reload(true);});' class="o-btn c-today__btn" href="javascript:;"><b>X</b></a>
 
 
 <div class="wrapperLogin">
