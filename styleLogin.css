@@ -694,8 +694,8 @@ body {
 }
 
 .frame {
-  height: 575px;
-  width: 430px;
+  height: 600px;
+  width: 100%;
   background:
     -webkit-gradient(
     linear,
@@ -789,7 +789,7 @@ li {
 }
 
 .form-signin {
-  width: 430px;
+  /*width: 430px;*/
   height: 375px;
 	font-size: 16px;
 	font-weight: 300;
@@ -809,7 +809,7 @@ li {
 }
 
 .form-signup {
-  width: 430px;
+ /* width: 430px;*/
   height: 375px;
 	font-size: 16px;
 	font-weight: 300;
@@ -1276,7 +1276,7 @@ vertical-align: inherit;
     height: 865px;
 }
 .wrapperLogin {
-		height: 100% !important;
+		height: 170% !important;
 		TOP: 0px!important;
 	}
 
@@ -1284,18 +1284,30 @@ vertical-align: inherit;
 @media(min-width: 768px) and (max-width: 1000px)
 
 {
+	.frame {
+    height: 630px;
+	}
+	.frame-long {
+    height: 1000px;;
+}
+	.form-signin {
+		height: 430px;
+	
+	}
+	
+	
 	.successtext {
    
 		font-size: 27px;
 	}
 	li {
 
-       font-size: 28px !important;
+       font-size: 38px !important;
 	   
 	
 	}
 	label {
-		font-size: 25px;
+		font-size: 35px;
 	}
 	.btn-animate {
 		font-size: 20px;
@@ -1321,7 +1333,7 @@ vertical-align: inherit;
 			    font-size: 58px !important;
 	}
 	.wrapperLogin {
-		height: 100% !important;
+		height: 180% !important;
 		TOP: 0px!important;
 	}
 	.c-aside {
@@ -1346,6 +1358,14 @@ vertical-align: inherit;
 @media(max-width: 767px)
 
 {
+	.frame-long {
+		height: 865px;
+	}
+	
+	.form-signin {
+		height: 430px;
+	
+	}
 	.successtext {
    
 		font-size: 27px;
@@ -1353,11 +1373,11 @@ vertical-align: inherit;
 	
 	li {
 
-       font-size: 28px !important;
+       font-size:38px !important;
 
 	}
 	label {
-		font-size: 25px;
+		font-size: 35px;
 	}
 	.btn-animate {
 		font-size: 20px;
@@ -1385,7 +1405,7 @@ vertical-align: inherit;
 			    font-size: 58px !important;
 	}
 	.wrapperLogin {
-		height: 100% !important;
+		height: 150% !important;
 		TOP: 0px!important;
 	}
 	.c-aside {
