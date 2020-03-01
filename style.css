@@ -839,6 +839,11 @@ body{
 }
 
 
+#menu li {
+    font-size: 22px;
+}
+
+
 
 
 
@@ -846,6 +851,12 @@ body{
 
 {
 	
+	
+	
+	
+	.c-event__creator {
+    max-height: 600px;
+	}
 	
 .boutonnextstyle{
     position: relative;

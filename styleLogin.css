@@ -1284,6 +1284,33 @@ vertical-align: inherit;
 @media(min-width: 768px) and (max-width: 1000px)
 
 {
+	.btn-signup{
+	margin-left: 25% !important;
+	width: 50% !important;
+	height: 55px;
+	padding-top: 10px;
+	    font-size: 30px;
+		
+	}
+	
+	.btn-animate{
+	margin-left: 25% !important;
+	width: 50% !important;
+	height: 55px;
+	padding-top: 10px;
+	    font-size: 30px;
+	}
+	
+	
+	[type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
+    margin-right: 25%;
+    margin-left: 20%;
+	}
+	
+	
+	
+	
+	
 	
 	
 	.form-styling {
@@ -1293,7 +1320,7 @@ vertical-align: inherit;
 	}
 	.success {
 
-		left: 580px;
+		left: 780px;
 	}
 	.forgot a {
 		font-size: 37px;
@@ -1325,13 +1352,6 @@ vertical-align: inherit;
 	}
 	label {
 		font-size: 35px;
-	}
-	.btn-animate {
-		font-size: 20px;
-	}
-	
-	.btn-signup {
-		font-size: 20px;
 	}
 	
 	
