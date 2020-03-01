@@ -63,11 +63,11 @@
     <ul id="menu">
       <a href="#"><H2 id="TitreMuneNomUtilisateur" ></H2></a>
 	  <br />
-	  <li><a href="#" id="my-notification-button" style="display: none;">Recevoir les notifications (Sauf sur safari)</a></li>
+	  <li><b><a href="#" id="my-notification-button" style="display: none;">Recevoir les notifications (Sauf sur safari)</a></b></li>
 	  <br />
-      <li><a href="#">Demander de l'aide</a></li>
+      <li><b><a href="#">Demander de l'aide</a></b></li>
 	  <br />
-      <li><a onclick='localStorage.NomUser="";localStorage.IdUser="";  firebase.auth().signOut();firebase.auth().signOut();firebase.auth().signOut().then(function(user) {document.location.reload(true);});' href="javascript:;">Déconnection </a></li>
+      <li><b><a onclick='localStorage.NomUser="";localStorage.IdUser="";  firebase.auth().signOut();firebase.auth().signOut();firebase.auth().signOut().then(function(user) {document.location.reload(true);});' href="javascript:;">Déconnection </a></b></li>
      
     </ul>
   </div>
@@ -159,6 +159,9 @@
       <div>
         <div class="cover-photo"></div>
         <div class="profile-photo"></div>
+		<br />
+		<br />
+		<br />
         <h1>TPL Orléans RDL</h1>
        
       </div>
@@ -274,7 +277,7 @@ function fill_table(month, month_length, indexMonth) {
     <div class="c-monthyear">
     <div class="c-month">
         <!-- <span id="prev" class="prev fa fa-angle-left" aria-hidden="true"></span> -->
-		<span id="prev" class="prev" aria-hidden="true"><FONT style="position: relative; top: -35px;left: -6px;" SIZE="6"><b><</b></FONT></span>
+		<button id="prev" class="prev" aria-hidden="true"><FONT style="position: relative; top: -14px;left: -6px; color:white;" SIZE="8"><b><</b></FONT></button>
 
         <div id="c-paginator">
           <span class="c-paginator__month"><FONT SIZE="6"><b>Janvier </b></FONT></span>
@@ -290,7 +293,8 @@ function fill_table(month, month_length, indexMonth) {
           <span class="c-paginator__month"><FONT SIZE="6"><b>Novembre</b></FONT></span>
           <span class="c-paginator__month"><FONT SIZE="6"><b>Decembre</b></FONT></span>
         </div>
-        <span id="next" class="next" aria-hidden="true"><FONT style="position: relative; top: -35px;left: -6px;" SIZE="6"><b>></b></FONT></span>
+		
+		<button id="next" class="next" aria-hidden="true"><FONT style="position: relative; top: -14px;left: -6px; color:white;" SIZE="8"><b>></b></FONT></button>
 		<!-- class="next fa fa-angle-right" -->
       </div>
       <span class="c-paginator__year"><b>2020</b></span>

@@ -770,6 +770,13 @@ input {
 
 
 
+.c-cal__cel::before {
+    padding-top: 0%;
+}
+
+.c-cal__row {
+    padding: 40px !important;
+}
 
 #boutonDeDeconnection{
 	color: red;  
@@ -807,27 +814,62 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media(min-width: 768px) and (max-width: 1000px)
 
 {
+	
+	
+	#menuToggle span {
+    width: 63px;
+    height: 12px;
+	}
+	
+	
+	.c-month .prev, .c-month .next{
+	width: 50px;
+    height: 50px;
+}
+
+
+	.c-aside__day {
+		font-size: 58px;
+	}
 	
 	a {
     font-size: 40px;
 	}
 
 .o-btn {
-    font-size: 30px !important;
+    font-size: 40px  !important;
+	    height: 40px;
 }
 .c-paginator__year {
     font-size: 30px !important;
+	padding: 0 60px !important;
 }
 	
 .c-month .prev {
-    left: -15px !important;
+    left: -40px !important;
 }
 
 .c-month .next {
-    right: -15px !important;
+    right: -40px !important;
 }
 	
 	#calendarClassique{
@@ -861,7 +903,7 @@ body{
 		width: 92% !important;
 	}
 	html {
-		font-size: 30px !important;
+		font-size: 40px !important;
 	}
 	header > .wrapper {
 		padding: 0 100px !important;
@@ -880,15 +922,35 @@ body{
 	.wrapper {
     padding-left: 20px!important;
 	}
+	
+	
+
+	
+	
+	
 }
-
-
 
 
 @media(max-width: 767px)
 
 {
+
+
 	
+	#menuToggle span {
+    width: 63px;
+    height: 12px;
+	}
+	
+	.c-month .prev, .c-month .next{
+	width: 50px;
+    height: 50px;
+}
+	
+	
+	.c-aside__day {
+		font-size: 58px;
+	}
 	
 	.wrapper {
     padding-left: 20px!important;
@@ -901,18 +963,20 @@ a {
 
 
 .o-btn {
-    font-size: 30px !important;
+    font-size: 40px !important;
+	    height: 40px;
 }
 .c-paginator__year {
     font-size: 30px !important;
+	padding: 0 60px !important;
 }
 	
 .c-month .prev {
-    left: -15px !important;
+    left: -40px !important;
 }
 
 .c-month .next {
-    right: -15px !important;
+    right: -40px !important;
 }
 h1 {
 
@@ -944,7 +1008,7 @@ h1 {
 	.c-aside {
 		width: 92% !important;
 	html {
-		font-size: 30px !important;
+		font-size: 40px !important;
 	}
 	header > .wrapper {
 		padding: 0 100px !important;

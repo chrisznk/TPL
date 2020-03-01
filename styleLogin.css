@@ -1257,7 +1257,7 @@ a.btn-goback:hover {
 
 
 
-
+	
 
 
 
@@ -1284,11 +1284,28 @@ vertical-align: inherit;
 @media(min-width: 768px) and (max-width: 1000px)
 
 {
+	
+	
+	.form-styling {
+    height: 55px !important;
+	width: 100% !important;
+	font-size: 43px !important;
+	}
+	.success {
+
+		left: 580px;
+	}
+	.forgot a {
+		font-size: 37px;
+	}
+		
+	
+	
 	.frame {
     height: 630px;
 	}
 	.frame-long {
-    height: 1000px;;
+    height: 1120px;;
 }
 	.form-signin {
 		height: 430px;
@@ -1312,9 +1329,7 @@ vertical-align: inherit;
 	.btn-animate {
 		font-size: 20px;
 	}
-	.forgot a {
-		font-size: 27px;
-	}
+	
 	.btn-signup {
 		font-size: 20px;
 	}
@@ -1324,10 +1339,7 @@ vertical-align: inherit;
 	.container h1 {
 		font-size: 70px !important;
 	}
-	.formInput input {
-		width: 90% !important;
-		font-size: 33px !important;		
-	}
+	
 	.formInput button {
 		    width: 90% !important;
 			    font-size: 58px !important;
@@ -1358,8 +1370,25 @@ vertical-align: inherit;
 @media(max-width: 767px)
 
 {
+	
+	.form-styling {
+    height: 55px !important;
+	width: 100% !important;
+	font-size: 43px !important;
+	}
+	.success {
+
+		left: 580px;
+	}
+	.forgot a {
+		font-size: 37px;
+	}
+	
+	
+	
+	
 	.frame-long {
-		height: 865px;
+		height: 1120px;
 	}
 	
 	.form-signin {
@@ -1382,9 +1411,7 @@ vertical-align: inherit;
 	.btn-animate {
 		font-size: 20px;
 	}
-	.forgot a {
-		font-size: 27px;
-	}
+
 	
 	.btn-signup {
 		font-size: 20px;
@@ -1396,10 +1423,7 @@ vertical-align: inherit;
 	
 		font-size: 70px !important;
 	}
-	.formInput input {
-		width: 90% !important;
-		font-size: 33px !important;		
-	}
+	
 	.formInput button {
 		    width: 90% !important;
 			    font-size: 58px !important;
