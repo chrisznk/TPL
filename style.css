@@ -821,10 +821,22 @@ body{
 
 
 
-
-
-
-
+.boutonnextstyle{
+	position: relative; 
+	top: -14px;
+	left: -6px; 
+	color:white;
+	
+	
+}
+.boutonprevstyle{
+	position: relative; 
+	top: -14px;
+	left: -6px; 
+	color:white;
+	
+	
+}
 
 
 
@@ -834,6 +846,27 @@ body{
 
 {
 	
+	
+.boutonnextstyle{
+    position: relative;
+    top: -5px;
+    left: 0px;
+    color: white;
+}
+	
+.boutonprevstyle{
+    position: relative;
+    top: -5px;
+    left: 0px;
+    color: white;
+}
+
+	
+	
+	
+	.c-cal__row {
+    padding: 58px !important;
+}
 	
 	#menuToggle span {
     width: 63px;
@@ -936,7 +969,9 @@ body{
 {
 
 
-	
+	.c-cal__row {
+    padding: 58px !important;
+}
 	#menuToggle span {
     width: 63px;
     height: 12px;
