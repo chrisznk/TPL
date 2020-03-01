@@ -463,8 +463,8 @@ function onManageWebPushSubscriptionButtonClicked(event) {
 
     function updateMangeWebPushSubscriptionButton(buttonSelector) {
         var hideWhenSubscribed = false;
-        var subscribeText = "Subscribe to Notifications";
-        var unsubscribeText = "Unsubscribe from Notifications";
+        var subscribeText = "Recevoir les notifications (Touts navigateurs sauf safari)";
+        var unsubscribeText = "Se desinscrire aux notifications";
 
         getSubscriptionState().then(function(state) {
             var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
