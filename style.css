@@ -799,6 +799,10 @@ h1 {
 @media(min-width: 768px) and (max-width: 1000px)
 
 {
+	
+	a {
+    font-size: 40px;
+	}
 
 .o-btn {
     font-size: 30px !important;
@@ -864,7 +868,9 @@ h1 {
 @media(max-width: 767px)
 
 {
-	
+a {
+    font-size: 40px;
+	}	
 
 
 .o-btn {

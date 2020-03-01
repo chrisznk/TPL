@@ -62,9 +62,12 @@
 
     <ul id="menu">
       <a href="#"><H2 id="TitreMuneNomUtilisateur" ></H2></a>
-	  <a href="#" id="my-notification-button" style="display: none;"><li>Recevoir les notifications (Android et windows)</li></a>
-      <a href="#"><li>Demander de l'aide</li></a>
-      <a onclick='localStorage.NomUser="";localStorage.IdUser="";  firebase.auth().signOut();firebase.auth().signOut();firebase.auth().signOut().then(function(user) {document.location.reload(true);});' href="javascript:;"><li>Déconnection</li></a>
+	  <br />
+	  <li><a href="#" id="my-notification-button" style="display: none;">Recevoir les notifications (Touts navigateurs sauf safari)</a></li>
+	  <br />
+      <li><a href="#">Demander de l'aide</a></li>
+	  <br />
+      <li><a onclick='localStorage.NomUser="";localStorage.IdUser="";  firebase.auth().signOut();firebase.auth().signOut();firebase.auth().signOut().then(function(user) {document.location.reload(true);});' href="javascript:;">Déconnection </a></li>
      
     </ul>
   </div>
