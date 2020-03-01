@@ -73,7 +73,8 @@ $(function() {
 						'LeNom': document.getElementById("Creation_Nom").value+'',
 						'LePrenom': document.getElementById("Creation_Prenom").value+'',
 						'Nom' : document.getElementById("Creation_Prenom").value+' '+document.getElementById("Creation_Nom").value[0],
-						'Tel':document.getElementById("Creation_Tel").value+''
+						'Tel':document.getElementById("Creation_Tel").value+'',
+						'Mail':document.getElementById("Creation_Email").value+''
 				});
 				
 				
