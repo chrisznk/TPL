@@ -149,18 +149,18 @@ $(function() {
 		console.log(errorCode);
 		console.log(errorMessage);
 		if(errorMessage=="The email address is badly formatted."){
-			alert("Votre adresse mail n'est pas conforme.");
+			alert("Ton adresse mail n'est pas conforme.");
 		}
 		if(errorMessage=="There is no user record corresponding to this identifier. The user may have been deleted."){
-			alert("Votre adresse mail n'est pas enregistré. Veuillez vous rapprocher de votre responsable de prédication ou du préposé aux territoires.");
+			alert("Ton adresse mail n'est pas enregistré.");
 		}
 		if(errorMessage=="The password is invalid or the user does not have a password."){
-			alert("Votre mot de passe est incorrecte. Veuillez reessayer.");
+			alert("Ton mot de passe est incorrecte.");
 		}
 		if(errorMessage=="The password is invalid or the user does not have a password."){
-			alert("Votre mot de passe est incorrecte. Veuillez reessayer.");
+			alert("Ton mot de passe est incorrecte.");
 		}
-		//alert('La connection a échoué. Verifiez votre adresse mail et mot de passe.');
+		//alert('La connection a échoué. Verifies ton adresse mail et mot de passe.');
 	});
 
 
@@ -305,7 +305,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			  for(Jour in snapshot.val()){
 				  ListeDesCreneaux ='';
 				  var Equilibre="pair";
-				  var EquilibreMsg=": Toutes les associations sont complètes mais vous pouvez réserver un autre créneau. <br />";
+				  var EquilibreMsg=": Toutes les associations sont complètes mais tu peux réserver un autre créneau. <br />";
 				//console.log(Jour);
 				for(Lieu in snapshot.child(Jour).val()){
 					ListeDesCreneaux+='<br /> <br /> • <u><b>'+Lieu+'</b></u> <br />';
@@ -320,13 +320,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 							
 
 							if(!Frere2){
-								var depannerConfirmation = "javascript:if(window.confirm(\'Voulez vous vous inscrire à ce créneau? Si vous avez un imprévu vous devrez vous organiser directement avec votre compagnon.\')){	      if('"+Frere1+"'!='"+NomUser.Nom+"'){ firebase.database().ref(\'calendrier/"+Jour+"/"+Lieu+"/"+Heure+"/\').set({\'1\': \'"+Frere1+"\',\'2\': \'"+NomUser.Nom+"\'});                        envoyerNotif('"+Frere1+"','"+NomUser.Nom+"','"+Jour+"','"+Lieu+"','"+Heure+"');                       this.replaceWith( \'"+NomUser.Nom+"\' );}else{alert('Vous ne pouvez pas réserver deux fos le même créneau');}        };";
+								var depannerConfirmation = "javascript:if(window.confirm(\'Veux tu t inscrire à ce créneau? Si tu as un imprévu tu devras t organiser directement avec ton compagnon.\')){	      if('"+Frere1+"'!='"+NomUser.Nom+"'){ firebase.database().ref(\'calendrier/"+Jour+"/"+Lieu+"/"+Heure+"/\').set({\'1\': \'"+Frere1+"\',\'2\': \'"+NomUser.Nom+"\'});                        envoyerNotif('"+Frere1+"','"+NomUser.Nom+"','"+Jour+"','"+Lieu+"','"+Heure+"');                       this.replaceWith( \'"+NomUser.Nom+"\' );}else{alert('Tu ne peut pas réserver deux fos le même créneau');}        };";
 								var BoutonDepanner='<a class="c-add o-btn js-event__add" onclick="'+depannerConfirmation+'"  href="javascript:;"><font color="red"><b>Dépanner</b></font></a>';
 
 								
 								Frere2=BoutonDepanner;
 								Equilibre="impair";
-								EquilibreMsg=": Vous pouvez dépanner certains créneaux. <br />";
+								EquilibreMsg=": Tu peux dépanner certains créneaux. <br />";
 							}
 							ListeDesCreneaux+='<b>'+Heure+'</b> : '+Frere1+' - '+Frere2+'<br />'
 
