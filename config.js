@@ -9,8 +9,8 @@
 	jour[2] = ["j2", "Mercredi"];
 	jour[3] = ["j3", "Jeudi"];
 	jour[4] = ["j4", "Vendredi"];
-	jour[5] = ["j5", "Samedi"];
-	jour[6] = ["j6", "Dimanche"];
+	//jour[5] = ["j5", "Samedi"];
+	//jour[6] = ["j6", "Dimanche"];
 	 
 	// LISTE DES CRENEAUX D ACTIVITE TPL//
 	var heure=[];
