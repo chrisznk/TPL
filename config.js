@@ -9,8 +9,8 @@
 	jour[2] = ["j2", "Mercredi"];
 	jour[3] = ["j3", "Jeudi"];
 	jour[4] = ["j4", "Vendredi"];
-	jour[5] = ["j5", "Samedi"];
-	jour[6] = ["j6", "Dimanche"];
+	//jour[5] = ["j5", "Samedi"];
+	//jour[6] = ["j6", "Dimanche"];
 	 
 	// LISTE DES CRENEAUX D ACTIVITE TPL//
 	var heure=[];
@@ -45,14 +45,14 @@
 	//heure["j4"][2] = ["j4h2", "Après midi"];
 	
 	//Samedi
-	heure["j5"] = [];
-	heure["j5"][0] = ["j5h0", ""];
+	//heure["j5"] = [];
+	//heure["j5"][0] = ["j5h0", "7h-9h"];
 	//heure["j5"][1] = ["j5h1", "Matin"];
 	//heure["j5"][2] = ["j5h2", "Après midi"];
 	
 	//Dimanche
-	heure["j6"] = [];
-	heure["j6"][0] = ["j6h0", ""];
+	//heure["j6"] = [];
+	//heure["j6"][0] = ["j6h0", "7h-9h"];
 	//heure["j6"][1] = ["j6h1", "Après midi"];
 
 
@@ -120,14 +120,25 @@
 	
 	//        SAMEDI
 	//Activité spécial 7h-9h
-	lieu["j5h0"] = [];
-	lieu["j5h0"][0] = ["j5h0r0", ""];
+	//lieu["j5h0"] = [];
+	//lieu["j5h0"][0] = ["j5h0r0", "Gare Orléans"];
+	//Matin
+	//lieu["j5h1"] = [];
+	//lieu["j5h1"][0] = ["j5h1r0", "Gare Orléans"];
+	//Après midi
+	//lieu["j5h2"] = [];
+	//lieu["j5h2"][0] = ["j5h2r0", "Gare Orléans"];
 	
 	//        DIMANCHE
 	//Activité spécial 7h-9h
-	lieu["j6h0"] = [];
-	lieu["j6h0"][0] = ["j6h0r0", ""];
-
+	//lieu["j6h0"] = [];
+	//lieu["j6h0"][0] = ["j6h0r0", "Gare Orléans"];
+	//Matin
+	//lieu["j6h1"] = [];
+	//lieu["j6h1"][0] = ["j6h1r0", "Gare Orléans"];
+	//Après midi
+	//lieu["j6h2"] = [];
+	//lieu["j6h2"][0] = ["j6h2r0", "Gare Orléans"];
 	
 	
 	

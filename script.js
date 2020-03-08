@@ -1,5 +1,56 @@
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
 var NomUser=localStorage.NomUser;
 var IdUser=localStorage.IdUser;
+
+//global variables
+var monthEl = $(".c-main");
+//var dataCel = $(".c-cal__cel");
+var dateObj = new Date();
+var month = dateObj.getUTCMonth() + 1;
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+var monthText = [
+  "Janvier",
+  "Fevrier",
+  "Mars",
+  "Avril",
+  "Mais",
+  "Juin",
+  "Juillet",
+  "Aout",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Decembre"
+];
+var indexMonth = month;
+var todayBtn = $(".c-today__btn");
+var addBtn = $(".js-event__add");
+var saveBtn = $(".js-event__save");
+var closeBtn = $(".js-event__close");
+var winCreator = $(".js-event__creator");
+var inputDate = $(this).data();
+today = year + "-" + month + "-" + day;
+today = formatDate(today);
+document.querySelector('input[type="date"]').value = today;
+
+
+
+
 if(localStorage.email){
 	document.getElementById('InputLogin').value=localStorage.email;
 	document.getElementById('InputPwd').value=localStorage.password;
@@ -380,35 +431,7 @@ $("#login-button").click(function(event){
 ////////////////////////////////////////////////////////////////////////////////Code Login
 
 
-//global variables
-var monthEl = $(".c-main");
-var dataCel = $(".c-cal__cel");
-var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1;
-var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear();
-var monthText = [
-  "Janvier",
-  "Fevrier",
-  "Mars",
-  "Avril",
-  "Mais",
-  "Juin",
-  "Juillet",
-  "Aout",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Decembre"
-];
-var indexMonth = month;
-var todayBtn = $(".c-today__btn");
-var addBtn = $(".js-event__add");
-var saveBtn = $(".js-event__save");
-var closeBtn = $(".js-event__close");
-var winCreator = $(".js-event__creator");
-var inputDate = $(this).data();
-today = year + "-" + month + "-" + day;
+
 
 
 // ------ set default events -------
@@ -535,6 +558,7 @@ todayBtn.on("click", function() {
 });
 
 //higlight the cel of current day
+var dataCel = $(".c-cal__cel");
 dataCel.each(function() {
   if ($(this).data("day") === today) {
     $(this).addClass("isToday");
@@ -543,19 +567,37 @@ dataCel.each(function() {
 });
 
 //window event creator
+
+
+
 addBtn.on("click", function() {
   winCreator.addClass("isVisible");
   $("body").addClass("overlay");
+  var dataCel = $(".c-cal__cel");
   dataCel.each(function() {
+	  
+	
     if ($(this).hasClass("isSelected")) {
       today = $(this).data("day");
+	  console.log(today);
+	  alert("selected");
+	  
       document.querySelector('input[type="date"]').value = today;
 	  
-	  filltheselect("listejour", new Date(today).getDay()-1);
-    } else {
+	  //filltheselect("listejour", new Date(today).getDay()-1);
+	  
+	  filltheselect(this.name, new Date(today).getDay()-1);
+	  
+	  
+    } 
+	/*else {
+		
       document.querySelector('input[type="date"]').value = today;
+	  console.log(today);
+	  alert("pas selected");
 	  filltheselect("listejour", new Date(today).getDay()-1);
-    }
+	  
+    }*/
   });
 });
 closeBtn.on("click", function() {
@@ -676,6 +718,7 @@ function fillEventSidebar(self) {
       break;
    }
 };
+var dataCel = $(".c-cal__cel");
 dataCel.on("click", function() {
   var thisEl = $(this);
   var thisDay = $(this)
