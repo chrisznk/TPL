@@ -580,7 +580,7 @@ addBtn.on("click", function() {
     if ($(this).hasClass("isSelected")) {
       today = $(this).data("day");
 	  console.log(today);
-	  alert("selected");
+	  //alert("selected");
 	  
       document.querySelector('input[type="date"]').value = today;
 	  
