@@ -1,3 +1,6 @@
+var NomUser=localStorage.NomUser;
+var IdUser=localStorage.IdUser;
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -12,13 +15,6 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-
-var NomUser=localStorage.NomUser;
-var IdUser=localStorage.IdUser;
-
-//global variables
-var monthEl = $(".c-main");
-//var dataCel = $(".c-cal__cel");
 var dateObj = new Date();
 var month = dateObj.getUTCMonth() + 1;
 var day = dateObj.getUTCDate();
@@ -37,16 +33,11 @@ var monthText = [
   "Novembre",
   "Decembre"
 ];
-var indexMonth = month;
-var todayBtn = $(".c-today__btn");
-var addBtn = $(".js-event__add");
-var saveBtn = $(".js-event__save");
-var closeBtn = $(".js-event__close");
-var winCreator = $(".js-event__creator");
-var inputDate = $(this).data();
-today = year + "-" + month + "-" + day;
-today = formatDate(today);
-document.querySelector('input[type="date"]').value = today;
+
+today = formatDate(year + "-" + month + "-" + day);
+
+//document.querySelector('input[type="date"]').value = formatDate(today);
+//filltheselect("listejour", new Date(formatDate(today)).getDay()-1);
 
 
 
@@ -431,7 +422,35 @@ $("#login-button").click(function(event){
 ////////////////////////////////////////////////////////////////////////////////Code Login
 
 
-
+//global variables
+var monthEl = $(".c-main");
+//var dataCel = $(".c-cal__cel");
+var dateObj = new Date();
+var month = dateObj.getUTCMonth() + 1;
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+var monthText = [
+  "Janvier",
+  "Fevrier",
+  "Mars",
+  "Avril",
+  "Mais",
+  "Juin",
+  "Juillet",
+  "Aout",
+  "Septembre",
+  "Octobre",
+  "Novembre",
+  "Decembre"
+];
+var indexMonth = month;
+var todayBtn = $(".c-today__btn");
+var addBtn = $(".js-event__add");
+var saveBtn = $(".js-event__save");
+var closeBtn = $(".js-event__close");
+var winCreator = $(".js-event__creator");
+var inputDate = $(this).data();
+today = year + "-" + month + "-" + day;
 
 
 // ------ set default events -------
@@ -590,14 +609,14 @@ addBtn.on("click", function() {
 	  
 	  
     } 
-	/*else {
+	else {
 		
       document.querySelector('input[type="date"]').value = today;
 	  console.log(today);
-	  alert("pas selected");
+	  //alert("pas selected");
 	  filltheselect("listejour", new Date(today).getDay()-1);
 	  
-    }*/
+    }
   });
 });
 closeBtn.on("click", function() {
